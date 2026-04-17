@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #9ab5cf;
+    color: rgb(221, 221, 221);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-family: 'Nunito', sans-serif; font-weight: 900;
+    color: #90b0ce;
+    background-color: aliceblue;
+    padding: 10px 25px;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.team {
+    background-color: #4893c9;
+    border-radius: 16px;
+    padding: 32px 48px;
+    text-align: center;
+    min-width: 200px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    grid-row:span;
+}
+
+.team h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+.team.rojo h2 {
+    color: #e05c5c;
+}
+
+.team.azul h2 {
+    color: #5c8ee0;
+}
+
+.score {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    line-height: 1;
+}
+
+.team.rojo .score {
+    color: #ffffff;
+}
+
+.team.azul .score {
+    color: #ffffff;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #0f3460;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1a5276;
+}
+
+.reset button {
+    padding: 12px 36px;
+    font-size: 1rem;
+    background-color: #0f3460;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 5%;
+    margin-left: 5%;
+    justify-content: center;
+
+}
+
+.reset button:hover {
+    background-color: #777;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador Voley</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    
+</head>
+<body>
+    <h1>Torneo de voley</h1>
+    <h2>Recuento de puntos</h2>
+    <div class="screenboard">
+        
+        <div class="team rojo">
+            <h2>equipo rojo</h2>
+            <div class="score" id="scoreRojo">0</div>
+            <div class="buttons">
+                <button onclick="addScore('rojo')">+1</button>
+                <button onclick="subtractScore('rojo')">-1</button>
+            </div>
+        </div>
+
+        <div class="team azul">
+            <h2>equipo azul</h2>
+            <div class="score" id="scoreAzul">0</div>
+            <div class="buttons">
+                <button onclick="addScore('azul')">+1</button>
+                <button onclick="subtractScore('azul')">-1</button>
+            </div>
+        </div>
+
+        <div class="reset" id="reset">
+        <button onclick="resetScore()">reiniciar puntos</button>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="functions.js"></script>
+</body>
+</html>
