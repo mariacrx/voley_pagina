@@ -32,11 +32,20 @@ h2 {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+ 
+.ganadorText {
+color: #90b0ce;
+font-family: 'Nunito', sans-serif;
+text-transform: uppercase;
+margin-bottom: 3%;
+font-size: 1.0rem ;
+}
 
-.scoreboard {
+
+.screenboard {
     display: flex;
-    gap: 40px;
-    margin-bottom: 50px;
+    gap: 80px;
+    margin-bottom: 100px;
 }
 
 .team {
@@ -63,6 +72,12 @@ h2 {
 
 .team.azul h2 {
     color: #5c8ee0;
+}
+
+.setLabel {
+font-family: 'Nunito', sans-serif;
+text-transform: uppercase;
+margin-top: 20px;
 }
 
 .score {
@@ -103,18 +118,23 @@ button:hover {
 }
 
 .reset button {
-    padding: 12px 36px;
+    padding: 10px 36px;
     font-size: 1rem;
     background-color: #0f3460;
     border-radius: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-top: 5%;
     margin-left: 5%;
-    justify-content: center;
+    justify-content:end;
 
 }
 
 .reset button:hover {
-    background-color: #777;
+        background-color: #1a5276;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
