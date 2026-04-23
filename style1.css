@@ -45,7 +45,7 @@ font-size: 1.0rem ;
 .screenboard {
     display: flex;
     gap: 80px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 
 .team {
@@ -125,7 +125,7 @@ button:hover {
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-left: 5%;
-    justify-content:end;
+    justify-content:center;
 
 }
 

@@ -32,10 +32,8 @@ function subtractScore(equipo){ //resta puntos
     }
 }
 
- // FUNCION setWin dentro de add: Al sumar un punto, se verifica si ese equipo ganó el set (≥25 puntos Y diferencia ≥2)
-//Si ganó el set, se incrementa su contador de sets y se reinician los puntos del set
-//agregar si puedo: El equipo que llegue PRIMERO a 2 sets, se muestra el ganador y se bloquean los botones
-
+// FUNCION setWin dentro de add: Al sumar un punto, se verifica si ese equipo ganó el set (≥25 puntos Y diferencia ≥2)
+//Si ganó el set, se incrementa su contador de sets y se reinician los puntajes(para iniciar el contador del otro set)
 function setWin(){
     let ganador = null; // null cambia cuando alguno gane 1 set
     
@@ -50,11 +48,6 @@ function setWin(){
         ganador = "rojo";
     } else if (scoreAzul >= limite && scoreAzul - scoreRojo >= 2) {
         ganador = "azul";
-    
-    //} else if (scoreRojo >= 25 && scoreRojo - scoreAzul >= 2) {
-     //   ganador = "rojo"
-    //} else if (scoreAzul >= 25 && scoreAzul - scoreRojo >= 2){
-    //    ganador = "azul"
     }
 
     // Se suma 1 puntito de set para el equipo que corresponde
@@ -65,7 +58,6 @@ function setWin(){
         setAzul++;
         document.getElementById("setAzul").textContent = setAzul;
     }   
-
     // Si ganador ya no es null(false pasa a true) se verfifica si ya hay un ganador
     if (ganador) {
         if (winnerTeam()) return;
@@ -74,7 +66,7 @@ function setWin(){
     }
 }
 
-//verifica que equipo gano y pasa como parametro ese equipo para mostrarlo
+//verifica que equipo gano. No pasa ningun parametro(no entiendo)
 function winnerTeam(){
     if (setRojo === 2) {
         showWinner('rojo');
@@ -90,19 +82,20 @@ function winnerTeam(){
     return false;
 }
 
-//mostraria el ganador y bloquea el boton
+//El equipo que llegue PRIMERO a 2 sets, se muestra el ganador y se bloquean los botones.
 function showWinner(equipo) {
-
     const msg = document.getElementById("ganador");
     msg.textContent = ` Felicitaciones equipo ${equipo}! ⭐`;
     // condicion en una linea: si el parametro pasado(equipo) es igual al valor comparado 
     // ejecuta el primer valor(letra color rojo) sino ejecuta lo segundo(letra color azul)
     msg.style.color = equipo === 'rojo' ? '#e05c5c' : '#5c8ee0'; 
 
-    // FALTA Deshabilitar todos los botones
-    const btn = document.getElementById("buttons");
-    btn.disabled = true;
-    
+    // Deshabilitar todos los botones. FALTA: no deshabilitar el ultimo boton 
+    const botones = document.querySelectorAll("button")
+    botones.forEach(btn => { btn.disabled = true });
+    // botones.forEach(function (btn, indice) {
+    //     try
+    // });
 }
 
 function resetScore() {
