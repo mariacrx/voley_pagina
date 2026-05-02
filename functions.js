@@ -7,29 +7,24 @@ let empatados = false;
 
 
 //funciones
-
 function addScore(equipo){  //suma puntos. Agregado: hasta que algun equipo gane
-
     if (equipo === 'rojo') {
         scoreRojo++;
-        document.getElementById("scoreRojo").textContent = scoreRojo;
     } else if (equipo === 'azul'){
         scoreAzul++;
-        document.getElementById("scoreAzul").textContent = scoreAzul;
     }
+    actualizarContenido();
     setWin();
 }
 
 function subtractScore(equipo){ //resta puntos
-
     if (winnerTeam()) return; //verifica si algun equipo gano. alpedo creo
     if (equipo === 'rojo' && scoreRojo > 0){
         scoreRojo--;
-        document.getElementById("scoreRojo").textContent = scoreRojo
     } else if (equipo === 'azul' && scoreAzul > 0){
         scoreAzul--;
-        document.getElementById("scoreAzul").textContent = scoreAzul;
     }
+    actualizarContenido();
 }
 
 // FUNCION setWin dentro de add: Al sumar un punto, se verifica si ese equipo ganó el set (≥25 puntos Y diferencia ≥2)
@@ -51,24 +46,28 @@ function setWin(){
     }
 
     // Se suma 1 puntito de set para el equipo que corresponde
-     if (ganador === 'rojo') {
+    if (ganador === 'rojo') {
         setRojo++;
-        document.getElementById("setRojo").textContent = setRojo;
     } else if (ganador === 'azul'){
         setAzul++;
-        document.getElementById("setAzul").textContent = setAzul;
     }   
+    actualizarContenido();
+
     // Si ganador ya no es null(false pasa a true) se verfifica si ya hay un ganador
     if (ganador) {
         if (winnerTeam()) return;
         //si nadie gano el partido, se resetean los puntos
         resetScore(); 
+
     }
 }
 
 //verifica que equipo gano. No pasa ningun parametro(no entiendo)
 function winnerTeam(){
-    if (setRojo === 2) {
+
+    if (setRojo === 3 || setAzul === 3) {
+
+    } else if (setRojo === 2) {
         showWinner('rojo');
         return true;
     } else if(setAzul === 2) {
@@ -89,18 +88,49 @@ function showWinner(equipo) {
     // condicion en una linea: si el parametro pasado(equipo) es igual al valor comparado 
     // ejecuta el primer valor(letra color rojo) sino ejecuta lo segundo(letra color azul)
     msg.style.color = equipo === 'rojo' ? '#e05c5c' : '#5c8ee0'; 
+    //resetSet();
 
-    // Deshabilitar todos los botones. FALTA: no deshabilitar el ultimo boton 
-    const botones = document.querySelectorAll("button")
+
+    // Deshabilitar todos los botones. alpedo pero me sirve para ver como funcionan las arrow functions
+    const botones = document.querySelectorAll(".botonPuntos")
     botones.forEach(btn => { btn.disabled = true });
-    // botones.forEach(function (btn, indice) {
-    //     try
+    // botones.forEach(function DeshabilitarBoton(btn, indice) {
+    //     btn.disblaed = true
+    //     return btn
     // });
+}
+
+function actualizarContenido() {
+document.getElementById("scoreRojo").textContent = scoreRojo;
+document.getElementById("scoreAzul").textContent = scoreAzul;
+document.getElementById("setRojo").textContent = setRojo;
+document.getElementById("setAzul").textContent = setAzul;
 }
 
 function resetScore() {
 scoreAzul = 0;
 scoreRojo = 0;
-document.getElementById('scoreAzul').textContent = 0;
-document.getElementById('scoreRojo').textContent = 0;
+actualizarContenido();
 }
+
+function resetSet() {
+setAzul = 0;
+setRojo = 0;
+actualizarContenido();
+}
+
+function resetAll() {
+    scoreRojo = 0;
+    scoreAzul = 0;
+    setRojo = 0;
+    setAzul = 0;
+    empatados = false;
+    document.getElementById("ganador").textContent = "";
+    botones = document.querySelectorAll(".botonPuntos")
+    botones.forEach(btn => { btn.disabled = false });
+    actualizarContenido();
+}
+
+document.getElementById("reset").addEventListener("click", resetAll);
+
+
